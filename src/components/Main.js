@@ -18,17 +18,37 @@ imageDatas = (function getImageURL(imageDataArr){
 	return imageDataArr;
 })(imageDatas);
 
+
+class ImgFigure extends React.Component {
+	render() {
+		<figure>
+			<img/>
+			<figcaption>
+			</figcaption>
+		</figure>
+	}
+}
+
 class AppComponent extends React.Component {
-  render() {
-    return (
-      	<section className="stage">
-      		<section className="img-sec">
-      		</section>
-      		<nav className="controller-nav">
-      		</nav>
-      	</section>
-    );
-  }
+	render() {
+	  	var controllerUnits = [];
+	  	var imgFigures = [];
+
+	  	for(var i=0; i< imageDatas.length;i++){
+	  		(function(i){
+	  			imgFigures.push(<ImgFigure data={imageDatas[i]} />);
+	  		})(i)
+	  	}
+	    return (
+	      	<section className="stage">
+	      		<section className="img-sec">
+	      			{imgFigures}
+	      		</section>
+	      		<nav className="controller-nav">
+	      		</nav>
+	      	</section>
+	    );
+	}
 }
 
 AppComponent.defaultProps = {
